@@ -20,16 +20,3 @@ def driver(request):
     driver.quit()
 
 
-@pytest.fixture
-def personal_account(driver):
-    return PersonalAccountPage(driver)
-
-
-@pytest.fixture
-def constructor(driver):
-    return ConstructorPage(driver)
-
-
-@pytest.fixture
-def order_feed(driver):
-    return OrderFeedPage(driver)

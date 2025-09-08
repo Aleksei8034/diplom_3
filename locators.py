@@ -33,7 +33,7 @@ class OrderFeedLocators:
     TEXT_ORDER_FEED = (By.XPATH, ".//*[text()='Лента заказов']")  # текст Лента заказов
     ORDER_FROM_ORDER_FEED = (By.XPATH, ".//p[@class='text text_type_digits-default']")  # первый заказ в списке Лента заказов
     TEXT_COMPOSITION_ORDER = (By.XPATH, ".//p[@class='text text_type_main-medium mb-8']")  # текст Состав в карточке заказа
-    TEXT_COUNTER_COMPLETED_FOR_ALL_TIME = (By.XPATH, "(.//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large'])[1]")  # текст счетчика Выполнено за все время
-    TEXT_COUNTER_COMPLETED_FOR_TODAY = (By.XPATH, "(.//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large'])[2]")  # текст счетчика Выполнено за сегодня
+    TEXT_COUNTER_COMPLETED_FOR_ALL_TIME = (By.XPATH, "//div[descendant::p[text()='Выполнено за все время:']]/p[contains(@class, 'OrderFeed_number__2MbrQ')]")  # текст счетчика Выполнено за все время
+    TEXT_COUNTER_COMPLETED_FOR_TODAY = (By.XPATH, ".//div[descendant::p[text()='Выполнено за сегодня:']]/p[contains(@class, 'OrderFeed_number__2MbrQ')]")  # текст счетчика Выполнено за сегодня
     TEXT_LIST_ON_WORK = (By.XPATH, ".//ul[@class='OrderFeed_orderListReady__1YFem OrderFeed_orderList__cBvyi']/li[last()]") # текст внутри раздела В работе
     ORDER_ID = ".//p[contains(@class, 'text text_type_digits-default') and contains(text(), '{order_id}')]"  # Динамический локатор заказа по его id в Ленте заказов

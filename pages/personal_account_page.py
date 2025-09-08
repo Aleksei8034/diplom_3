@@ -10,12 +10,16 @@ class PersonalAccountPage(BasePage):
     def go_to_personal_account(self):
         self.click_element(PersonalAccountLocators.BUTTON_PERSONAL_ACCOUNT)
 
+
     @allure.step('Авторизация')
-    def authorization(self):
-        self.add_text_to_element(PersonalAccountLocators.FIELD_EMAIL, UserData.email)
-        self.add_text_to_element(PersonalAccountLocators.FIELD_PASSWORD, UserData.password)
-        self.click_element(PersonalAccountLocators.BUTTON_LOG_IN)
-        self.url_to_be(Url.URL_HOME)
+    def authorization(self, email, password):
+     self.add_text_to_element(PersonalAccountLocators.FIELD_EMAIL, email)
+     self.add_text_to_element(PersonalAccountLocators.FIELD_PASSWORD, password)
+     self.click_element(PersonalAccountLocators.BUTTON_LOG_IN)
+     self.url_to_be(Url.URL_HOME)
+
+
+    
 
     @allure.step('Перейти в историю заказов')
     def go_to_order_history(self):
