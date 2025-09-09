@@ -3,14 +3,16 @@ from selenium.webdriver.common.by import By
 
 # Личный кабинет и профиль
 class PersonalAccountLocators:
-    BUTTON_PERSONAL_ACCOUNT = (By.XPATH, ".//*[contains(text(), 'Личный Кабинет')]")  # кнопка Личный кабинет
-    FIELD_EMAIL = (By.XPATH, ".//input[@class='text input__textfield text_type_main-default']")  # поле Email
-    FIELD_PASSWORD = (By.XPATH, "(.//input[@class='text input__textfield text_type_main-default'])[2]")  # поле Пароль
-    BUTTON_LOG_IN = (By.XPATH, ".//button[text()='Войти']")  # кнопка Войти
+    BUTTON_PERSONAL_ACCOUNT = (By.XPATH,".//p[normalize-space()='Личный Кабинет'] | .//a[normalize-space()='Личный Кабинет']")  # кнопка Личный кабинет
+    FIELD_EMAIL = (By.XPATH, ".//input[@type='text' or @type='email' or @name='name' or @name='email']")  # поле Email
+    FIELD_PASSWORD = (By.XPATH, ".//input[@type='password' or @name='password']")  # поле Пароль
+    BUTTON_LOG_IN = (By.XPATH, ".//button[normalize-space()='Войти']")  # кнопка Войти
     BUTTON_PROFILE = (By.XPATH, "//a[text()='Профиль']")  # кнопка Профиль
-    BUTTON_HISTORY_ORDERS = (By.XPATH, "//a[text()='История заказов']")  # кнопка История заказов
-    BUTTON_LOGOUT = (By.XPATH, "//button[text()='Выход']")  # кнопка Выход
-    LAST_ORDER_FROM_ORDER_HISTORY = (By.XPATH, "(.//p[@class='text text_type_digits-default'])[last()]")  # последний сделанный заказ в списке История заказов
+    BUTTON_HISTORY_ORDERS = (By.XPATH, ".//a[normalize-space()='История заказов']")  # кнопка История заказов
+    BUTTON_LOGOUT = (By.XPATH, ".//button[normalize-space()='Выход']")  # кнопка Выход
+    LAST_ORDER_FROM_ORDER_HISTORY = (By.XPATH,
+    ".//ul[contains(@class,'orderList') or contains(@class,'OrderFeed_orderList')]"
+    "/li[last()]//p[contains(@class,'text_type_digits')]")  # последний сделанный заказ в списке История заказов
 
 class ConstructorLocators:
     BUTTON_CONSTRUCTOR = (By.XPATH, "//p[text()='Конструктор']")  # кнопка Конструктор
@@ -33,7 +35,7 @@ class OrderFeedLocators:
     TEXT_ORDER_FEED = (By.XPATH, ".//*[text()='Лента заказов']")  # текст Лента заказов
     ORDER_FROM_ORDER_FEED = (By.XPATH, ".//p[@class='text text_type_digits-default']")  # первый заказ в списке Лента заказов
     TEXT_COMPOSITION_ORDER = (By.XPATH, ".//p[@class='text text_type_main-medium mb-8']")  # текст Состав в карточке заказа
-    TEXT_COUNTER_COMPLETED_FOR_ALL_TIME = (By.XPATH, "//div[descendant::p[text()='Выполнено за все время:']]/p[contains(@class, 'OrderFeed_number__2MbrQ')]")  # текст счетчика Выполнено за все время
-    TEXT_COUNTER_COMPLETED_FOR_TODAY = (By.XPATH, ".//div[descendant::p[text()='Выполнено за сегодня:']]/p[contains(@class, 'OrderFeed_number__2MbrQ')]")  # текст счетчика Выполнено за сегодня
+    TEXT_COUNTER_COMPLETED_FOR_ALL_TIME = (By.XPATH,".//*[text()='Выполнено за все время:']/following-sibling::p[contains(@class,'OrderFeed_number__')]")  # текст счетчика Выполнено за все время
+    TEXT_COUNTER_COMPLETED_FOR_TODAY = (By.XPATH,".//*[text()='Выполнено за сегодня:']/following-sibling::p[contains(@class,'OrderFeed_number__')]")  # текст счетчика Выполнено за сегодня
     TEXT_LIST_ON_WORK = (By.XPATH, ".//ul[@class='OrderFeed_orderListReady__1YFem OrderFeed_orderList__cBvyi']/li[last()]") # текст внутри раздела В работе
     ORDER_ID = ".//p[contains(@class, 'text text_type_digits-default') and contains(text(), '{order_id}')]"  # Динамический локатор заказа по его id в Ленте заказов
